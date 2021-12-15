@@ -26,7 +26,6 @@
       rel="stylesheet"
       href="../node_modules/bootstrap-social/bootstrap-social.css"
     />
-
     <!-- Bootstrap Javascript -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -91,9 +90,10 @@
           </div>
         </div>
       </nav>
+
+      <!-- Modal content-->
       <div id="loginModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
-          <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Login</h4>
@@ -168,7 +168,7 @@
           </div>
           <div class="col-12 col-sm align-self-center">
             <!-- tooltip -->
-            <a
+            <!-- <a
               href="#ReserveTable"
               class="btn btn-block nav-link btn-warning"
               data-toggle="tooltip"
@@ -176,7 +176,83 @@
               title="or call us at <br> <strong>+852 12345678</strong>"
               data-placement="bottom"
               >Reserve Table
-            </a>
+            </a> -->
+            <button
+              type="button"
+              data-target="#ReserveTable"
+              data-toggle="modal"
+              class="btn btn-block btn-warning"
+            >
+              Reserve Table
+            </button>
+            <!-- Modal Reserve -->
+            <div class="modal modal-fade" id="ReserveTable" role="dialog">
+              <div class="modal-dialog modal-lg" role="content">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title">Reserve Table</h3>
+                    <button type="button" class="close" data-dismiss="modal">
+                      &times;
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="">
+                      <div class="form-group row">
+                        <label for="Number of Guests" class="col-12 col-md-2"
+                          >Number of Guests</label
+                        >
+                        <div class="col-md-10">
+                          <input type="radio" /> 1 <input type="radio" /> 2
+                          <input type="radio" /> 3 <input type="radio" /> 4
+                          <input type="radio" /> 5 <input type="radio" /> 6
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="section" class="col-12 col-md-2"
+                          >Section</label
+                        >
+                        <div class="col-12 col-md-10">
+                          <div class="btn-group" role="button">
+                            <a href="" class="btn btn-success">Non-Smoking</a>
+                            <a href="" class="btn btn-danger">Smoking</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="Date" class="col-12 col-md-2"
+                          >Date and Time</label
+                        >
+                        <div class="col-12 col-md-4">
+                          <input
+                            type="date"
+                            class="form-control"
+                            placeholder="Date"
+                          />
+                        </div>
+                        <div class="col-12 col-md-4">
+                          <input
+                            type="time"
+                            class="form-control"
+                            placeholder="Time"
+                          />
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-md-2 col-md-10">
+                          <button
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            cancel
+                          </button>
+                          <button class="btn btn-primary">Reserve</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -260,6 +336,14 @@
             >
               <span class="carousel-control-next-icon"></span>
             </a>
+            <div class="btn-group" id="carouselbutton">
+              <button class="btn btn-danger btn-sm" id="carousel-pause">
+                <span class="fa fa-pause"></span>
+              </button>
+              <button class="btn btn-danger btn-sm" id="carousel-play">
+                <span class="fa fa-play"></span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -338,7 +422,7 @@
           </div>
         </div>
       </div>
-      <div class="row row-content align-items-center" id="ReserveTable">
+      <div class="row row-content align-items-center">
         <div class="col-sm"></div>
         <div class="col-sm-8">
           <div class="card">
@@ -457,9 +541,14 @@
       </div>
     </footer>
     <script>
-      // function to work tooltip
       $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
+        $("#mycarousel").carousel({ interval: 2000 });
+        $("#carousel-pause").click(function () {
+          $("#mycarousel").carousel("pause");
+        });
+        $("#carousel-play").click(function () {
+          $("#mycarousel").carousel("cycle");
+        });
       });
     </script>
   </body>
